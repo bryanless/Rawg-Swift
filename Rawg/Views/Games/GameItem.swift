@@ -12,36 +12,44 @@ struct GameItem: View {
 
     var body: some View {
         VStack(
-            alignment: .leading,
-            spacing: Space.small
+            alignment: .leading
         ) {
-            KFImageView(game.backgroundImage)
+            gameItemImage(game.backgroundImage)
             VStack(
                 alignment: .leading,
-                spacing: Space.tiny
+                spacing: Space.small
             ) {
-                Text(game.name)
-                    .font(.headline)
-                    .lineLimit(2, reservesSpace: true)
-                Text(game.released)
-                    .font(.caption)
-                    .foregroundColor(.secondary)
+                VStack(
+                    alignment: .leading,
+                    spacing: Space.tiny
+                ) {
+                    Text(game.name)
+                        .font(.body)
+                        .lineLimit(2, reservesSpace: true)
+                    Text(game.released)
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
+
+                HStack(
+                    spacing: Space.tiny
+                ) {
+                    Image(systemName: Icons.star)
+                        .font(.system(size: 12))
+                        .foregroundColor(.yellow)
+                    Text(game.rating.description)
+                        .font(.footnote)
+                }
             }
-            HStack(
-                spacing: 4.0
-            ) {
-                Image(systemName: Icons.star)
-                    .foregroundColor(.yellow)
-                Text(game.rating.description)
-                    .font(.footnote)
-            }
+            .padding([.leading, .trailing, .bottom], Space.small)
         }
+        .background(Colors.surface)
         .cornerRadius(Shape.roundedCorner)
     }
 }
 
 struct GameItem_Previews: PreviewProvider {
-    static let gamesResponse: GamesResponse = PreviewData.load(file: "games_response")
+    static let gamesResponse: GamesResponse = PreviewData.load("games_response")
 
     static var previews: some View {
         GameItem(game: gamesResponse.results.first!)

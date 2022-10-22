@@ -11,4 +11,6 @@ import SwiftUI
 struct Icons {
     static let photo = "photo.fill"
     static let star = "star.fill"
+    static let starLeadingHalf = "star.leadinghalf.filled"
+    static let starOutlined = "star"
 }

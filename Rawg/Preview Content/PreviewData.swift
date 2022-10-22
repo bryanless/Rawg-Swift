@@ -8,7 +8,7 @@
 import Foundation
 
 class PreviewData {
-    static func load<T: Decodable>(file: String) -> T {
+    static func load<T: Decodable>(_ file: String) -> T {
         guard let path = Bundle.main.path(forResource: file, ofType: "json") else {
             fatalError("Failed to locate \(file) in bundle.")
         }

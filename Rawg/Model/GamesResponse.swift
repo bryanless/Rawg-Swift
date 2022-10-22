@@ -68,7 +68,7 @@ struct GamesResult: Codable, Identifiable {
     let updated: String
     let userGame: String?
     let reviewsCount: Int
-    let saturatedColor, dominantColor: Color
+    let saturatedColor, dominantColor: String
     let platforms: [PlatformElement]
     let parentPlatforms: [ParentPlatform]
     let genres: [Genre]
@@ -108,7 +108,7 @@ struct GamesResult: Codable, Identifiable {
         self.slug = try container.decode(String.self, forKey: .slug)
         self.name = try container.decode(String.self, forKey: .name)
         let releasedString = try container.decode(String.self, forKey: .released)
-        self.released = Formatter.formatDate(releasedString).description
+        self.released = Formatter.toShortDate(releasedString).description
         self.tba = try container.decode(Bool.self, forKey: .tba)
         self.backgroundImage = try container.decode(String.self, forKey: .backgroundImage)
         self.rating = try container.decode(Double.self, forKey: .rating)
@@ -124,8 +124,8 @@ struct GamesResult: Codable, Identifiable {
         self.updated = try container.decode(String.self, forKey: .updated)
         self.userGame = try container.decodeIfPresent(String.self, forKey: .userGame)
         self.reviewsCount = try container.decode(Int.self, forKey: .reviewsCount)
-        self.saturatedColor = try container.decode(Color.self, forKey: .saturatedColor)
-        self.dominantColor = try container.decode(Color.self, forKey: .dominantColor)
+        self.saturatedColor = try container.decode(String.self, forKey: .saturatedColor)
+        self.dominantColor = try container.decode(String.self, forKey: .dominantColor)
         self.platforms = try container.decode([PlatformElement].self, forKey: .platforms)
         self.parentPlatforms = try container.decode([ParentPlatform].self, forKey: .parentPlatforms)
         self.genres = try container.decode([Genre].self, forKey: .genres)
@@ -137,118 +137,8 @@ struct GamesResult: Codable, Identifiable {
     }
 }
 
-// MARK: - AddedByStatus
-struct AddedByStatus: Codable {
-    let yet, owned, beaten, toplay: Int
-    let dropped, playing: Int
-}
-
-enum Color: String, Codable {
-    case the0F0F0F = "0f0f0f"
-}
-
-// MARK: - EsrbRating
-struct EsrbRating: Codable {
-    let id: Int
-    let name, slug: String
-}
-
-// MARK: - Genre
-struct Genre: Codable {
-    let id: Int
-    let name, slug: String
-    let gamesCount: Int
-    let imageBackground: String
-    let domain: Domain?
-    let language: Language?
-
-    enum CodingKeys: String, CodingKey {
-        case id, name, slug
-        case gamesCount = "games_count"
-        case imageBackground = "image_background"
-        case domain, language
-    }
-}
-
-enum Domain: String, Codable {
-    case appsAppleCOM = "apps.apple.com"
-    case epicgamesCOM = "epicgames.com"
-    case gogCOM = "gog.com"
-    case marketplaceXboxCOM = "marketplace.xbox.com"
-    case microsoftCOM = "microsoft.com"
-    case nintendoCOM = "nintendo.com"
-    case playGoogleCOM = "play.google.com"
-    case storePlaystationCOM = "store.playstation.com"
-    case storeSteampoweredCOM = "store.steampowered.com"
-}
-
-enum Language: String, Codable {
-    case eng
-}
-
-// MARK: - ParentPlatform
-struct ParentPlatform: Codable {
-    let platform: EsrbRating
-}
-
-// MARK: - PlatformElement
-struct PlatformElement: Codable {
-    let platform: PlatformPlatform
-    let releasedAt: String?
-    let requirementsEn, requirementsRu: Requirements?
-
-    enum CodingKeys: String, CodingKey {
-        case platform
-        case releasedAt = "released_at"
-        case requirementsEn = "requirements_en"
-        case requirementsRu = "requirements_ru"
-    }
-}
-
-// MARK: - PlatformPlatform
-struct PlatformPlatform: Codable {
-    let id: Int
-    let name, slug: String
-    let image: String?
-    let yearEnd, yearStart: Int?
-    let gamesCount: Int
-    let imageBackground: String
-
-    enum CodingKeys: String, CodingKey {
-        case id, name, slug, image
-        case yearEnd = "year_end"
-        case yearStart = "year_start"
-        case gamesCount = "games_count"
-        case imageBackground = "image_background"
-    }
-}
-
-// MARK: - Requirements
-struct Requirements: Codable {
-    let minimum: String
-    let recommended: String?
-}
-
-// MARK: - Rating
-struct Rating: Codable {
-    let id: Int
-    let title: Title
-    let count: Int
-    let percent: Double
-}
-
-enum Title: String, Codable {
-    case exceptional, meh, recommended, skip
-}
-
 // MARK: - ShortScreenshot
 struct ShortScreenshot: Codable {
     let id: Int
     let image: String
-}
-
-// MARK: - Store
-struct Store: Codable {
-    let id: Int
-    let store: Genre
 }

@@ -1,5 +1,5 @@
 //
-//  ExploreViewModel.swift
+//  DetailViewModel.swift
 //  Rawg
 //
 //  Created by Bryan on 22/10/22.
@@ -7,20 +7,20 @@
 
 import Foundation
 
-class ExploreViewModel: ObservableObject {
+class DetailViewModel: ObservableObject {
     @Published var currentState: ViewState = .start
 
     // MARK: - View state
     enum ViewState {
         case start, loading
-        case success(_ games: [GamesResult])
+        case success(_ games: GameDetailResponse)
         case failure(_ error: Error)
     }
 
-    // MARK: - Fetch games
-    func fetchGames() {
+    // MARK: - Fetch game details
+    func fetchGame(_ id: String) {
         self.currentState = .loading
-        RawgApi().getGames { result in
+        RawgApi().getGame(id: id) { result in
             switch result {
             case let .success(games):
                 self.currentState = .success(games)
@@ -31,7 +31,7 @@ class ExploreViewModel: ObservableObject {
     }
 
     // MARK: - Initialize
-    init() {
-        fetchGames()
+    init(id: String) {
+        fetchGame(id)
     }
 }

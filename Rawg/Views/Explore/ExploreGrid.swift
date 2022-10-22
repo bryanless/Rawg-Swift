@@ -16,20 +16,28 @@ struct ExploreGrid: View {
         switch exploreViewModel.currentState {
         case .start, .loading:
             ProgressView()
+                .navigationTitle("Explore")
         case let .success(games):
             NavigationStack {
                 ScrollView {
                     LazyVGrid(columns: columns) {
                         ForEach(games) { game in
-                            GameItem(game: game)
+                            NavigationLink {
+                                GameDetail(detailViewModel: DetailViewModel(id: game.id.description))
+                            } label: {
+                                GameItem(game: game)
+                            }
+                            .buttonStyle(.plain)
                         }
                     }
                     .padding()
                     .navigationTitle("Explore")
                 }
+                .background(Color.green)
             }
         case let .failure(error):
             Text(error.localizedDescription)
+                .navigationTitle("Explore")
         }
     }
 }

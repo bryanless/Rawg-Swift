@@ -8,5 +8,5 @@
 import Foundation
 
 struct Shape {
-    static let roundedCorner: CGFloat = 12
+    static let roundedCorner = 12.0
 }

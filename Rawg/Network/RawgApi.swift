@@ -27,4 +27,18 @@ struct RawgApi {
                 }
             }
     }
+
+    // MARK: - Get game details
+    func getGame(id: String, completion: @escaping (Result<GameDetailResponse, AFError>) -> Void) {
+        AF.request("\(BASE_URL)/\(GAMES)/\(id)", parameters: defaultParameter)
+        .validate()
+        .responseDecodable(of: GameDetailResponse.self) { response in
+            switch response.result {
+            case let .success(data):
+                completion(.success(data))
+            case let .failure(error):
+                completion(.failure(error))
+            }
+        }
+    }
 }

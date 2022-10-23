@@ -16,10 +16,8 @@ struct GameInformationItem: View {
             alignment: .leading
         ) {
             Text(label)
-                .font(.caption)
                 .foregroundColor(.secondary)
             Text(text)
-                .font(.caption)
         }
     }
 }

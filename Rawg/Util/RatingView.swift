@@ -16,9 +16,9 @@ struct RatingView: View {
 
         HStack(spacing: 0) {
             ForEach(0..<5, id: \.self) { index in
-                if (index < ratingFloor || ratingDecimal >= 0.75) {
+                if index < ratingFloor || ratingDecimal >= 0.75 {
                     Image(systemName: Icons.star)
-                } else if (index == ratingFloor && ratingDecimal >= 0.25) {
+                } else if index == ratingFloor && ratingDecimal >= 0.25 {
                     Image(systemName: Icons.starLeadingHalf)
                 } else {
                     Image(systemName: Icons.starOutlined)

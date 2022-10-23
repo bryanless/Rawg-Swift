@@ -9,6 +9,7 @@ import Foundation
 import Alamofire
 
 struct RawgApi {
+    private let API_KEY = "56c20b91ae1648ac90d66da30067b299"
     private let BASE_URL = "https://api.rawg.io/api"
     private let GAMES = "games"
 
@@ -36,6 +37,23 @@ struct RawgApi {
             switch response.result {
             case let .success(data):
                 completion(.success(data))
+            case let .failure(error):
+                completion(.failure(error))
+            }
+        }
+    }
+
+    // MARK: - Search games
+    func searchGames(searchText: String, completion: @escaping (Result<[GamesResult], AFError>) -> Void) {
+        AF.request("\(BASE_URL)/\(GAMES)", parameters: [
+            "search": searchText,
+            "key": API_KEY
+        ])
+        .validate()
+        .responseDecodable(of: GameSearchResponse.self) { response in
+            switch response.result {
+            case let .success(data):
+                completion(.success(data.results))
             case let .failure(error):
                 completion(.failure(error))
             }

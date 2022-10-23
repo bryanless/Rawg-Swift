@@ -40,13 +40,13 @@ struct GameDetail: View {
                             Divider()
                             GameRateItem(
                                 label: "METASCORE",
-                                title: game.metacritic.description,
+                                title: game.metacritic?.description ?? "-",
                                 text: { Text("Point") }
                             )
                             Divider()
                             GameRateItem(
                                 label: "AGE",
-                                title: game.esrbRating.slug.toAge().rawValue,
+                                title: game.esrbRating?.slug.toAge().rawValue ?? "-",
                                 text: { Text("Years Old") }
                             )
                         }
@@ -63,26 +63,22 @@ struct GameDetail: View {
                                 .fontWeight(.bold)
                             GameInformationItem(
                                 label: "Genres",
-                                text: game.genres.map { genre in
+                                text: game.genres.isEmpty ? "-" : game.genres.map { genre in
                                     genre.name
                                 }.joined(separator: ", ")
                             )
-                            if !game.developers.isEmpty {
-                                GameInformationItem(
-                                    label: "Developer",
-                                    text: game.developers.map { developer in
-                                        developer.name
-                                    }.joined(separator: ", ")
-                                )
-                            }
-                            if !game.publishers.isEmpty {
-                                GameInformationItem(
-                                    label: "Publisher",
-                                    text: game.publishers.map { publisher in
-                                        publisher.name
-                                    }.joined(separator: ", ")
-                                )
-                            }
+                            GameInformationItem(
+                                label: "Developer",
+                                text: game.developers.isEmpty ? "-" : game.developers.map { developer in
+                                    developer.name
+                                }.joined(separator: ", ")
+                            )
+                            GameInformationItem(
+                                label: "Publisher",
+                                text: game.publishers.isEmpty ? "-" : game.publishers.map { publisher in
+                                    publisher.name
+                                }.joined(separator: ", ")
+                            )
                             GameInformationItem(label: "Release Date", text: game.released)
                         }
                     }
@@ -93,6 +89,9 @@ struct GameDetail: View {
             .navigationBarTitleDisplayMode(.inline)
         case let .failure(error):
             Text(error.localizedDescription)
+                .onAppear {
+                    print(error)
+                }
                 .navigationTitle("Game Detail")
                 .navigationBarTitleDisplayMode(.inline)
         }

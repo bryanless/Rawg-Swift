@@ -17,6 +17,7 @@ struct EsrbRating: Codable {
     let id: Int
     let name: EsrbRatingName
     let slug: EsrbRatingSlug
+    let nameEn, nameRu: String?
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -25,6 +26,8 @@ struct EsrbRating: Codable {
         self.name = EsrbRatingName(rawValue: nameString) ?? EsrbRatingName.everyone
         let slugString = try container.decode(String.self, forKey: .slug)
         self.slug = EsrbRatingSlug(rawValue: slugString) ?? EsrbRatingSlug.everyone
+        self.nameEn = try container.decodeIfPresent(String.self, forKey: .nameEn)
+        self.nameRu = try container.decodeIfPresent(String.self, forKey: .nameRu)
     }
 }
 
@@ -46,7 +49,7 @@ enum EsrbRatingSlug: String, Codable {
 }
 
 enum EsrbRatingAge: String, Codable {
-    case everyone = "3+"
+    case everyone = "0+"
     case everyoneTenPlus = "10+"
     case teen = "13+"
     case mature = "17+"

@@ -11,19 +11,20 @@ import Foundation
 struct GameDetailResponse: Codable {
     let id: Int
     let slug, name, nameOriginal, gameDetailResponseDescription: String
-    let metacritic: Int
+    let metacritic: Int?
     let metacriticPlatforms: [MetacriticPlatform]
     let released: String
     let tba: Bool
     let updated: String
-    let backgroundImage, backgroundImageAdditional: String
+    let backgroundImage: String
+    let backgroundImageAdditional: String?
     let website: String
     let rating: Double
     let ratingTop: Int
     let ratings: [Rating]
-    let reactions: [String: Int]
+    let reactions: [String: Int]?
     let added: Int
-    let addedByStatus: AddedByStatus
+    let addedByStatus: AddedByStatus?
     let playtime, screenshotsCount, moviesCount, creatorsCount: Int
     let achievementsCount, parentAchievementsCount: Int
     let redditURL: String
@@ -39,8 +40,8 @@ struct GameDetailResponse: Codable {
     let parentPlatforms: [ParentPlatform]
     let platforms: [PlatformElement]
     let stores: [Store]
-    let developers, genres, tags, publishers: [Developer]
-    let esrbRating: EsrbRating
+    let developers, genres, tags, publishers: [Genre]
+    let esrbRating: EsrbRating?
     let clip: String?
     let descriptionRaw: String
 
@@ -89,6 +90,7 @@ struct GameDetailResponse: Codable {
         case descriptionRaw = "description_raw"
     }
 
+    // swiftlint:disable function_body_length
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.id = try container.decode(Int.self, forKey: .id)
@@ -96,21 +98,21 @@ struct GameDetailResponse: Codable {
         self.name = try container.decode(String.self, forKey: .name)
         self.nameOriginal = try container.decode(String.self, forKey: .nameOriginal)
         self.gameDetailResponseDescription = try container.decode(String.self, forKey: .gameDetailResponseDescription)
-        self.metacritic = try container.decode(Int.self, forKey: .metacritic)
+        self.metacritic = try? container.decode(Int.self, forKey: .metacritic)
         self.metacriticPlatforms = try container.decode([MetacriticPlatform].self, forKey: .metacriticPlatforms)
         let releasedString = try container.decode(String.self, forKey: .released)
         self.released = Formatter.toFullDate(releasedString)
         self.tba = try container.decode(Bool.self, forKey: .tba)
         self.updated = try container.decode(String.self, forKey: .updated)
         self.backgroundImage = try container.decode(String.self, forKey: .backgroundImage)
-        self.backgroundImageAdditional = try container.decode(String.self, forKey: .backgroundImageAdditional)
+        self.backgroundImageAdditional = try? container.decode(String.self, forKey: .backgroundImageAdditional)
         self.website = try container.decode(String.self, forKey: .website)
         self.rating = try container.decode(Double.self, forKey: .rating)
         self.ratingTop = try container.decode(Int.self, forKey: .ratingTop)
         self.ratings = try container.decode([Rating].self, forKey: .ratings)
-        self.reactions = try container.decode([String: Int].self, forKey: .reactions)
+        self.reactions = try? container.decode([String: Int].self, forKey: .reactions)
         self.added = try container.decode(Int.self, forKey: .added)
-        self.addedByStatus = try container.decode(AddedByStatus.self, forKey: .addedByStatus)
+        self.addedByStatus = try? container.decode(AddedByStatus.self, forKey: .addedByStatus)
         self.playtime = try container.decode(Int.self, forKey: .playtime)
         self.screenshotsCount = try container.decode(Int.self, forKey: .screenshotsCount)
         self.moviesCount = try container.decode(Int.self, forKey: .moviesCount)
@@ -139,11 +141,11 @@ struct GameDetailResponse: Codable {
         self.parentPlatforms = try container.decode([ParentPlatform].self, forKey: .parentPlatforms)
         self.platforms = try container.decode([PlatformElement].self, forKey: .platforms)
         self.stores = try container.decode([Store].self, forKey: .stores)
-        self.developers = try container.decode([Developer].self, forKey: .developers)
-        self.genres = try container.decode([Developer].self, forKey: .genres)
-        self.tags = try container.decode([Developer].self, forKey: .tags)
-        self.publishers = try container.decode([Developer].self, forKey: .publishers)
-        self.esrbRating = try container.decode(EsrbRating.self, forKey: .esrbRating)
+        self.developers = try container.decode([Genre].self, forKey: .developers)
+        self.genres = try container.decode([Genre].self, forKey: .genres)
+        self.tags = try container.decode([Genre].self, forKey: .tags)
+        self.publishers = try container.decode([Genre].self, forKey: .publishers)
+        self.esrbRating = try? container.decode(EsrbRating.self, forKey: .esrbRating)
         self.clip = try container.decodeIfPresent(String.self, forKey: .clip)
         self.descriptionRaw = try container.decode(String.self, forKey: .descriptionRaw)
     }

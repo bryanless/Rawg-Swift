@@ -26,8 +26,8 @@ struct EsrbRating: Codable {
         self.name = EsrbRatingName(rawValue: nameString) ?? EsrbRatingName.everyone
         let slugString = try container.decode(String.self, forKey: .slug)
         self.slug = EsrbRatingSlug(rawValue: slugString) ?? EsrbRatingSlug.everyone
-        self.nameEn = try container.decodeIfPresent(String.self, forKey: .nameEn)
-        self.nameRu = try container.decodeIfPresent(String.self, forKey: .nameRu)
+        self.nameEn = try? container.decodeIfPresent(String.self, forKey: .nameEn)
+        self.nameRu = try? container.decodeIfPresent(String.self, forKey: .nameRu)
     }
 }
 

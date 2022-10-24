@@ -10,9 +10,9 @@ import Foundation
 // MARK: - Rating
 struct Rating: Codable {
     let id: Int
-    let title: Title
-    let count: Int
-    let percent: Double
+    let title: Title?
+    let count: Int?
+    let percent: Double?
 }
 
 enum Title: String, Codable {

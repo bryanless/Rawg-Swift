@@ -12,35 +12,38 @@ struct GameDetailResponse: Codable {
     let id: Int
     let slug, name, nameOriginal, gameDetailResponseDescription: String
     let metacritic: Int?
-    let metacriticPlatforms: [MetacriticPlatform]
+    let metacriticPlatforms: [MetacriticPlatform]?
     let released: String
-    let tba: Bool
-    let updated: String
+    let tba: Bool?
+    let updated: String?
     let backgroundImage: String
     let backgroundImageAdditional: String?
-    let website: String
+    let website: String?
     let rating: Double
-    let ratingTop: Int
-    let ratings: [Rating]
+    let ratingTop: Int?
+    let ratings: [Rating]?
     let reactions: [String: Int]?
-    let added: Int
+    let added: Int?
     let addedByStatus: AddedByStatus?
-    let playtime, screenshotsCount, moviesCount, creatorsCount: Int
-    let achievementsCount, parentAchievementsCount: Int
-    let redditURL: String
-    let redditName, redditDescription, redditLogo: String
-    let redditCount, twitchCount, youtubeCount, reviewsTextCount: Int
-    let ratingsCount, suggestionsCount: Int
-    let alternativeNames: [String]
-    let metacriticURL: String
-    let parentsCount, additionsCount, gameSeriesCount: Int
+    let playtime, screenshotsCount, moviesCount, creatorsCount: Int?
+    let achievementsCount, parentAchievementsCount: Int?
+    let redditURL: String?
+    let redditName, redditDescription, redditLogo: String?
+    let redditCount, twitchCount, youtubeCount, reviewsTextCount: Int?
+    let ratingsCount: Int
+    let suggestionsCount: Int?
+    let alternativeNames: [String]?
+    let metacriticURL: String?
+    let parentsCount, additionsCount, gameSeriesCount: Int?
     let userGame: String?
-    let reviewsCount: Int
-    let saturatedColor, dominantColor: String
-    let parentPlatforms: [ParentPlatform]
-    let platforms: [PlatformElement]
-    let stores: [Store]
-    let developers, genres, tags, publishers: [Genre]
+    let reviewsCount: Int?
+    let saturatedColor, dominantColor: String?
+    let parentPlatforms: [ParentPlatform]?
+    let platforms: [PlatformElement]?
+    let stores: [Store]?
+    let developers, genres: [Genre]
+    let tags: [Genre]?
+    let publishers: [Genre]
     let esrbRating: EsrbRating?
     let clip: String?
     let descriptionRaw: String
@@ -99,51 +102,51 @@ struct GameDetailResponse: Codable {
         self.nameOriginal = try container.decode(String.self, forKey: .nameOriginal)
         self.gameDetailResponseDescription = try container.decode(String.self, forKey: .gameDetailResponseDescription)
         self.metacritic = try? container.decode(Int.self, forKey: .metacritic)
-        self.metacriticPlatforms = try container.decode([MetacriticPlatform].self, forKey: .metacriticPlatforms)
+        self.metacriticPlatforms = try? container.decode([MetacriticPlatform].self, forKey: .metacriticPlatforms)
         let releasedString = try container.decode(String.self, forKey: .released)
         self.released = Formatter.toFullDate(releasedString)
-        self.tba = try container.decode(Bool.self, forKey: .tba)
-        self.updated = try container.decode(String.self, forKey: .updated)
+        self.tba = try? container.decode(Bool.self, forKey: .tba)
+        self.updated = try? container.decode(String.self, forKey: .updated)
         self.backgroundImage = try container.decode(String.self, forKey: .backgroundImage)
         self.backgroundImageAdditional = try? container.decode(String.self, forKey: .backgroundImageAdditional)
-        self.website = try container.decode(String.self, forKey: .website)
+        self.website = try? container.decode(String.self, forKey: .website)
         self.rating = try container.decode(Double.self, forKey: .rating)
-        self.ratingTop = try container.decode(Int.self, forKey: .ratingTop)
-        self.ratings = try container.decode([Rating].self, forKey: .ratings)
+        self.ratingTop = try? container.decode(Int.self, forKey: .ratingTop)
+        self.ratings = try? container.decode([Rating].self, forKey: .ratings)
         self.reactions = try? container.decode([String: Int].self, forKey: .reactions)
-        self.added = try container.decode(Int.self, forKey: .added)
+        self.added = try? container.decode(Int.self, forKey: .added)
         self.addedByStatus = try? container.decode(AddedByStatus.self, forKey: .addedByStatus)
-        self.playtime = try container.decode(Int.self, forKey: .playtime)
-        self.screenshotsCount = try container.decode(Int.self, forKey: .screenshotsCount)
-        self.moviesCount = try container.decode(Int.self, forKey: .moviesCount)
-        self.creatorsCount = try container.decode(Int.self, forKey: .creatorsCount)
-        self.achievementsCount = try container.decode(Int.self, forKey: .achievementsCount)
-        self.parentAchievementsCount = try container.decode(Int.self, forKey: .parentAchievementsCount)
-        self.redditURL = try container.decode(String.self, forKey: .redditURL)
-        self.redditName = try container.decode(String.self, forKey: .redditName)
-        self.redditDescription = try container.decode(String.self, forKey: .redditDescription)
-        self.redditLogo = try container.decode(String.self, forKey: .redditLogo)
-        self.redditCount = try container.decode(Int.self, forKey: .redditCount)
-        self.twitchCount = try container.decode(Int.self, forKey: .twitchCount)
-        self.youtubeCount = try container.decode(Int.self, forKey: .youtubeCount)
-        self.reviewsTextCount = try container.decode(Int.self, forKey: .reviewsTextCount)
+        self.playtime = try? container.decode(Int.self, forKey: .playtime)
+        self.screenshotsCount = try? container.decode(Int.self, forKey: .screenshotsCount)
+        self.moviesCount = try? container.decode(Int.self, forKey: .moviesCount)
+        self.creatorsCount = try? container.decode(Int.self, forKey: .creatorsCount)
+        self.achievementsCount = try? container.decode(Int.self, forKey: .achievementsCount)
+        self.parentAchievementsCount = try? container.decode(Int.self, forKey: .parentAchievementsCount)
+        self.redditURL = try? container.decode(String.self, forKey: .redditURL)
+        self.redditName = try? container.decode(String.self, forKey: .redditName)
+        self.redditDescription = try? container.decode(String.self, forKey: .redditDescription)
+        self.redditLogo = try? container.decode(String.self, forKey: .redditLogo)
+        self.redditCount = try? container.decode(Int.self, forKey: .redditCount)
+        self.twitchCount = try? container.decode(Int.self, forKey: .twitchCount)
+        self.youtubeCount = try? container.decode(Int.self, forKey: .youtubeCount)
+        self.reviewsTextCount = try? container.decode(Int.self, forKey: .reviewsTextCount)
         self.ratingsCount = try container.decode(Int.self, forKey: .ratingsCount)
-        self.suggestionsCount = try container.decode(Int.self, forKey: .suggestionsCount)
-        self.alternativeNames = try container.decode([String].self, forKey: .alternativeNames)
-        self.metacriticURL = try container.decode(String.self, forKey: .metacriticURL)
-        self.parentsCount = try container.decode(Int.self, forKey: .parentsCount)
-        self.additionsCount = try container.decode(Int.self, forKey: .additionsCount)
-        self.gameSeriesCount = try container.decode(Int.self, forKey: .gameSeriesCount)
-        self.userGame = try container.decodeIfPresent(String.self, forKey: .userGame)
-        self.reviewsCount = try container.decode(Int.self, forKey: .reviewsCount)
-        self.saturatedColor = try container.decode(String.self, forKey: .saturatedColor)
-        self.dominantColor = try container.decode(String.self, forKey: .dominantColor)
-        self.parentPlatforms = try container.decode([ParentPlatform].self, forKey: .parentPlatforms)
-        self.platforms = try container.decode([PlatformElement].self, forKey: .platforms)
-        self.stores = try container.decode([Store].self, forKey: .stores)
+        self.suggestionsCount = try? container.decode(Int.self, forKey: .suggestionsCount)
+        self.alternativeNames = try? container.decode([String].self, forKey: .alternativeNames)
+        self.metacriticURL = try? container.decode(String.self, forKey: .metacriticURL)
+        self.parentsCount = try? container.decode(Int.self, forKey: .parentsCount)
+        self.additionsCount = try? container.decode(Int.self, forKey: .additionsCount)
+        self.gameSeriesCount = try? container.decode(Int.self, forKey: .gameSeriesCount)
+        self.userGame = try? container.decodeIfPresent(String.self, forKey: .userGame)
+        self.reviewsCount = try? container.decode(Int.self, forKey: .reviewsCount)
+        self.saturatedColor = try? container.decode(String.self, forKey: .saturatedColor)
+        self.dominantColor = try? container.decode(String.self, forKey: .dominantColor)
+        self.parentPlatforms = try? container.decode([ParentPlatform].self, forKey: .parentPlatforms)
+        self.platforms = try? container.decode([PlatformElement].self, forKey: .platforms)
+        self.stores = try? container.decode([Store].self, forKey: .stores)
         self.developers = try container.decode([Genre].self, forKey: .developers)
         self.genres = try container.decode([Genre].self, forKey: .genres)
-        self.tags = try container.decode([Genre].self, forKey: .tags)
+        self.tags = try? container.decode([Genre].self, forKey: .tags)
         self.publishers = try container.decode([Genre].self, forKey: .publishers)
         self.esrbRating = try? container.decode(EsrbRating.self, forKey: .esrbRating)
         self.clip = try container.decodeIfPresent(String.self, forKey: .clip)
@@ -153,13 +156,13 @@ struct GameDetailResponse: Codable {
 
 // MARK: - MetacriticPlatform
 struct MetacriticPlatform: Codable {
-    let metascore: Int
-    let url: String
-    let platform: MetacriticPlatformPlatform
+    let metascore: Int?
+    let url: String?
+    let platform: MetacriticPlatformPlatform?
 }
 
 // MARK: - MetacriticPlatformPlatform
 struct MetacriticPlatformPlatform: Codable {
-    let platform: Int
-    let name, slug: String
+    let platform: Int?
+    let name, slug: String?
 }

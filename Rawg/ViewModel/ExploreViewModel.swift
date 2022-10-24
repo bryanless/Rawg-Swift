@@ -19,10 +19,6 @@ class ExploreViewModel: ObservableObject {
         case failure(_ error: Error)
     }
 
-    enum SuccessFrom {
-        case fetchGame, searchGame
-    }
-
     // MARK: - Fetch games
     func fetchGames() {
         self.currentState = .loading

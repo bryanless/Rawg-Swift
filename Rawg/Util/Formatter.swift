@@ -41,6 +41,22 @@ struct Formatter {
         return released
     }
 
+    static func toApiDate(_ dateString: String) -> String {
+        let dateFormatterNow = DateFormatter()
+        let dateFormatterApi = DateFormatter()
+
+        dateFormatterNow.dateFormat = "MMMM dd, yyyy"
+        dateFormatterApi.dateFormat = "yyyy-MM-dd"
+
+        guard let date = dateFormatterNow.date(from: dateString) else {
+            return dateString
+        }
+
+        let released = dateFormatterApi.string(from: date)
+
+        return released
+    }
+
     static func rgbToColor(red: Double, green: Double, blue: Double) -> Color {
         return Color(red: red / 255, green: green / 255, blue: blue / 255)
     }

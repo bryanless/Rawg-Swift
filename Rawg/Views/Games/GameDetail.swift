@@ -17,11 +17,15 @@ struct GameDetail: View {
                 .navigationTitle("Game Detail")
                 .navigationBarTitleDisplayMode(.inline)
         case let .success(game):
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 VStack(
                     spacing: Space.none
                 ) {
-                    gameDetailImage(game.backgroundImage)
+                    if game.backgroundImage == nil {
+                        gameDetailImagePlaceholder()
+                    } else {
+                        gameDetailImage(game.backgroundImage!)
+                    }
 
                     VStack(
                         alignment: .leading,
@@ -52,7 +56,12 @@ struct GameDetail: View {
                         }
                         .frame(maxWidth: .infinity)
                         Divider()
-                        Text(game.descriptionRaw)
+                        if game.descriptionRaw.isEmpty {
+                            Text("No description")
+                                .foregroundColor(.secondary)
+                        } else {
+                            Text(game.descriptionRaw)
+                        }
                         Divider()
                         VStack(
                             alignment: .leading,
@@ -79,7 +88,10 @@ struct GameDetail: View {
                                     publisher.name
                                 }.joined(separator: ", ")
                             )
-                            GameInformationItem(label: "Release Date", text: game.released)
+                            GameInformationItem(
+                                label: "Release Date",
+                                text: game.released!
+                            )
                         }
                     }
                     .padding()

@@ -22,6 +22,9 @@
 		93A2F3F52906511500CDD889 /* UserDefaultsUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A2F3F42906511500CDD889 /* UserDefaultsUtils.swift */; };
 		93A2F3FA29066A2700CDD889 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A2F3F929066A2700CDD889 /* Profile.swift */; };
 		93A2F3FE29066A4200CDD889 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A2F3FD29066A4200CDD889 /* Home.swift */; };
+		93A2F4002906E2EB00CDD889 /* GameRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A2F3FF2906E2EB00CDD889 /* GameRow.swift */; };
+		93A2F4022906E4AD00CDD889 /* games_top_rated_response.json in Resources */ = {isa = PBXBuildFile; fileRef = 93A2F4012906E4AD00CDD889 /* games_top_rated_response.json */; };
+		93A2F4042906E85F00CDD889 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A2F4032906E85F00CDD889 /* HomeViewModel.swift */; };
 		93E263322902DE950051177D /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E263312902DE950051177D /* Formatter.swift */; };
 		93E2633F29031B170051177D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 93E2633E29031B170051177D /* Alamofire */; };
 		93E263432903DC580051177D /* ExploreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E263422903DC580051177D /* ExploreViewModel.swift */; };
@@ -66,6 +69,9 @@
 		93A2F3F42906511500CDD889 /* UserDefaultsUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsUtils.swift; sourceTree = "<group>"; };
 		93A2F3F929066A2700CDD889 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		93A2F3FD29066A4200CDD889 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		93A2F3FF2906E2EB00CDD889 /* GameRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRow.swift; sourceTree = "<group>"; };
+		93A2F4012906E4AD00CDD889 /* games_top_rated_response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = games_top_rated_response.json; sourceTree = "<group>"; };
+		93A2F4032906E85F00CDD889 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		93E263312902DE950051177D /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		93E263422903DC580051177D /* ExploreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewModel.swift; sourceTree = "<group>"; };
 		93E263442903DD080051177D /* RawgApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawgApi.swift; sourceTree = "<group>"; };
@@ -127,7 +133,6 @@
 				9322D40E28FFBC9600DD8069 /* Views */,
 				9322D40F28FFBCAD00DD8069 /* ViewModel */,
 				9322D41028FFBCBE00DD8069 /* Network */,
-				9322D41128FFBCC600DD8069 /* Database */,
 				9322D41228FFBCDE00DD8069 /* Model */,
 				93E263302902DE190051177D /* Util */,
 				9322D41728FFC42900DD8069 /* Theme */,
@@ -162,6 +167,7 @@
 		9322D40F28FFBCAD00DD8069 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				93A2F4032906E85F00CDD889 /* HomeViewModel.swift */,
 				93E263422903DC580051177D /* ExploreViewModel.swift */,
 				93E26373290442C90051177D /* DetailViewModel.swift */,
 			);
@@ -174,13 +180,6 @@
 				93E263442903DD080051177D /* RawgApi.swift */,
 			);
 			path = Network;
-			sourceTree = "<group>";
-		};
-		9322D41128FFBCC600DD8069 /* Database */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Database;
 			sourceTree = "<group>";
 		};
 		9322D41228FFBCDE00DD8069 /* Model */ = {
@@ -208,6 +207,7 @@
 				93E2635429040E5A0051177D /* GameDetail.swift */,
 				93E2636D29041AF00051177D /* GameRateItem.swift */,
 				93E2637129043DA20051177D /* GameInformationItem.swift */,
+				93A2F3FF2906E2EB00CDD889 /* GameRow.swift */,
 				9322D41528FFC34F00DD8069 /* GameItem.swift */,
 			);
 			path = Games;
@@ -228,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				9322D4242902C51C00DD8069 /* games_response.json */,
+				93A2F4012906E4AD00CDD889 /* games_top_rated_response.json */,
 				93E2635629040E7E0051177D /* game_detail_response.json */,
 			);
 			path = ApiResponses;
@@ -353,6 +354,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9322D4252902C51D00DD8069 /* games_response.json in Resources */,
+				93A2F4022906E4AD00CDD889 /* games_top_rated_response.json in Resources */,
 				931E8E3A28F5C8AC000E0853 /* Preview Assets.xcassets in Resources */,
 				931E8E3728F5C8AC000E0853 /* Assets.xcassets in Resources */,
 				93E2635729040E7E0051177D /* game_detail_response.json in Resources */,
@@ -406,6 +408,7 @@
 				93E2637029042CC90051177D /* RatingView.swift in Sources */,
 				93A2F3FA29066A2700CDD889 /* Profile.swift in Sources */,
 				93E2636A290411680051177D /* ParentPlatformResponse.swift in Sources */,
+				93A2F4042906E85F00CDD889 /* HomeViewModel.swift in Sources */,
 				9322D41D28FFC6D400DD8069 /* GamesResponse.swift in Sources */,
 				93A2F3F52906511500CDD889 /* UserDefaultsUtils.swift in Sources */,
 				93A2F3F02906507A00CDD889 /* Color.swift in Sources */,
@@ -414,6 +417,7 @@
 				93E2637229043DA20051177D /* GameInformationItem.swift in Sources */,
 				9322D41928FFC44300DD8069 /* Space.swift in Sources */,
 				93A2F3FE29066A4200CDD889 /* Home.swift in Sources */,
+				93A2F4002906E2EB00CDD889 /* GameRow.swift in Sources */,
 				9322D4282902C67100DD8069 /* PreviewData.swift in Sources */,
 				93E263432903DC580051177D /* ExploreViewModel.swift in Sources */,
 				93E2635B29040F4C0051177D /* RatingResponse.swift in Sources */,

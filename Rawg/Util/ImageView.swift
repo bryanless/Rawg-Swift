@@ -18,6 +18,19 @@ func KFImageView(_ urlString: String) -> KFImage {
         .fade(duration: 0.5)
 }
 
+func gameItemImagePlaceholder() -> some View {
+    return GeometryReader { geo in
+        Image(systemName: Icons.photo)
+            .frame(width: geo.size.width, height: 110, alignment: .center)
+    }
+}
+
+func gameDetailImagePlaceholder() -> some View {
+    return Image(systemName: Icons.photo)
+        .font(.system(size: 80))
+        .frame(height: 200)
+}
+
 func gameItemImage(_ urlString: String) -> some View {
     return GeometryReader { geo in
         KFImageView(urlString)
@@ -26,7 +39,8 @@ func gameItemImage(_ urlString: String) -> some View {
             .frame(width: geo.size.width, alignment: .center)
     }
     .frame(height: 110)
-    .cornerRadius(Shape.roundedCorner)
+    .clipped()
+//    .cornerRadius(Shape.roundedCorner)
 }
 
 func gameDetailImage(_ urlString: String) -> some View {

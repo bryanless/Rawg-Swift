@@ -14,7 +14,11 @@ struct GameItem: View {
         VStack(
             alignment: .leading
         ) {
-            gameItemImage(game.backgroundImage ?? "")
+            if game.backgroundImage == nil {
+                gameItemImagePlaceholder()
+            } else {
+                gameItemImage(game.backgroundImage!)
+            }
             VStack(
                 alignment: .leading,
                 spacing: Space.small
@@ -25,7 +29,7 @@ struct GameItem: View {
                 ) {
                     Text(game.name)
                         .font(.body)
-                        .lineLimit(2, reservesSpace: true)
+                        .lineLimit(3, reservesSpace: true)
                     Text(game.released ?? "-")
                         .font(.caption)
                         .foregroundColor(.secondary)

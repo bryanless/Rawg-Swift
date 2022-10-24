@@ -8,8 +8,22 @@
 import SwiftUI
 
 struct Home: View {
+    @StateObject private var homeViewModel = HomeViewModel()
+
     var body: some View {
-        Text("Home")
+        NavigationStack {
+            ScrollView(showsIndicators: false) {
+                VStack(
+                    spacing: Space.large
+                ) {
+                    GameRow(currentState: $homeViewModel.currentRecentlyUpdatedState, headline: "Recently Updated")
+                    GameRow(currentState: $homeViewModel.currentTopRatedState, headline: "Top Rated")
+                    GameRow(currentState: $homeViewModel.currentLatestReleasedState, headline: "Latest Released")
+                }
+                .padding(.vertical, Space.medium)
+            }
+            .navigationTitle("Home")
+        }
     }
 }
 

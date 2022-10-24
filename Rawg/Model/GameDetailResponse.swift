@@ -13,11 +13,10 @@ struct GameDetailResponse: Codable {
     let slug, name, nameOriginal, gameDetailResponseDescription: String
     let metacritic: Int?
     let metacriticPlatforms: [MetacriticPlatform]?
-    let released: String
+    let released: String?
     let tba: Bool?
     let updated: String?
-    let backgroundImage: String
-    let backgroundImageAdditional: String?
+    let backgroundImage, backgroundImageAdditional: String?
     let website: String?
     let rating: Double
     let ratingTop: Int?
@@ -103,11 +102,11 @@ struct GameDetailResponse: Codable {
         self.gameDetailResponseDescription = try container.decode(String.self, forKey: .gameDetailResponseDescription)
         self.metacritic = try? container.decode(Int.self, forKey: .metacritic)
         self.metacriticPlatforms = try? container.decode([MetacriticPlatform].self, forKey: .metacriticPlatforms)
-        let releasedString = try container.decode(String.self, forKey: .released)
-        self.released = Formatter.toFullDate(releasedString)
+        let releasedString = try? container.decode(String.self, forKey: .released)
+        self.released = Formatter.toFullDate(releasedString ?? "-")
         self.tba = try? container.decode(Bool.self, forKey: .tba)
         self.updated = try? container.decode(String.self, forKey: .updated)
-        self.backgroundImage = try container.decode(String.self, forKey: .backgroundImage)
+        self.backgroundImage = try? container.decode(String.self, forKey: .backgroundImage)
         self.backgroundImageAdditional = try? container.decode(String.self, forKey: .backgroundImageAdditional)
         self.website = try? container.decode(String.self, forKey: .website)
         self.rating = try container.decode(Double.self, forKey: .rating)

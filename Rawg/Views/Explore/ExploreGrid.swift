@@ -27,7 +27,7 @@ struct ExploreGrid: View {
                         .padding()
                         .navigationTitle("Explore")
                 } else {
-                    ScrollView {
+                    ScrollView(showsIndicators: false) {
                         LazyVGrid(columns: columns) {
                             ForEach(games) { game in
                                 NavigationLink {
@@ -55,6 +55,7 @@ struct ExploreGrid: View {
             text: $searchText,
             prompt: Text("Search a game")
         )
+        .disableAutocorrection(true)
         .onSubmit(of: .search) {
             exploreViewModel.searchGames(searchText: searchText)
         }

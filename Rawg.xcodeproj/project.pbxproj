@@ -21,6 +21,8 @@
 		93A2F3F3290650DA00CDD889 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A2F3F2290650DA00CDD889 /* Const.swift */; };
 		93A2F3F52906511500CDD889 /* UserDefaultsUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A2F3F42906511500CDD889 /* UserDefaultsUtils.swift */; };
 		93A2F3F729065CA700CDD889 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A2F3F629065CA700CDD889 /* MainViewModel.swift */; };
+		93A2F3FA29066A2700CDD889 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A2F3F929066A2700CDD889 /* Profile.swift */; };
+		93A2F3FE29066A4200CDD889 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A2F3FD29066A4200CDD889 /* Home.swift */; };
 		93E263322902DE950051177D /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E263312902DE950051177D /* Formatter.swift */; };
 		93E2633F29031B170051177D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 93E2633E29031B170051177D /* Alamofire */; };
 		93E263432903DC580051177D /* ExploreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E263422903DC580051177D /* ExploreViewModel.swift */; };
@@ -64,6 +66,8 @@
 		93A2F3F2290650DA00CDD889 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		93A2F3F42906511500CDD889 /* UserDefaultsUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsUtils.swift; sourceTree = "<group>"; };
 		93A2F3F629065CA700CDD889 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		93A2F3F929066A2700CDD889 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		93A2F3FD29066A4200CDD889 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		93E263312902DE950051177D /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		93E263422903DC580051177D /* ExploreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewModel.swift; sourceTree = "<group>"; };
 		93E263442903DD080051177D /* RawgApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawgApi.swift; sourceTree = "<group>"; };
@@ -151,6 +155,7 @@
 				931E8E3428F5C8AC000E0853 /* ContentView.swift */,
 				9322D41328FFC2E000DD8069 /* Home */,
 				93E263462903EC8A0051177D /* Explore */,
+				93A2F3F829066A0E00CDD889 /* Profile */,
 				9322D41428FFC32300DD8069 /* Games */,
 			);
 			path = Views;
@@ -195,6 +200,7 @@
 		9322D41328FFC2E000DD8069 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				93A2F3FD29066A4200CDD889 /* Home.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -236,6 +242,14 @@
 				93A2F3EF2906507A00CDD889 /* Color.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		93A2F3F829066A0E00CDD889 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				93A2F3F929066A2700CDD889 /* Profile.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		93E263302902DE190051177D /* Util */ = {
@@ -393,6 +407,7 @@
 				93E2635D29040FAB0051177D /* RequirementsResponse.swift in Sources */,
 				93E2637A2905918B0051177D /* ShortScreenshotResponse.swift in Sources */,
 				93E2637029042CC90051177D /* RatingView.swift in Sources */,
+				93A2F3FA29066A2700CDD889 /* Profile.swift in Sources */,
 				93E2636A290411680051177D /* ParentPlatformResponse.swift in Sources */,
 				9322D41D28FFC6D400DD8069 /* GamesResponse.swift in Sources */,
 				93A2F3F52906511500CDD889 /* UserDefaultsUtils.swift in Sources */,
@@ -402,6 +417,7 @@
 				93E2637229043DA20051177D /* GameInformationItem.swift in Sources */,
 				93A2F3F729065CA700CDD889 /* MainViewModel.swift in Sources */,
 				9322D41928FFC44300DD8069 /* Space.swift in Sources */,
+				93A2F3FE29066A4200CDD889 /* Home.swift in Sources */,
 				9322D4282902C67100DD8069 /* PreviewData.swift in Sources */,
 				93E263432903DC580051177D /* ExploreViewModel.swift in Sources */,
 				93E2635B29040F4C0051177D /* RatingResponse.swift in Sources */,

@@ -9,13 +9,12 @@ import SwiftUI
 
 @main
 struct RawgApp: App {
-    @StateObject private var mainViewModel = MainViewModel()
+    @AppStorage(Const.DARK_MODE) private var isDark = true
 
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .preferredColorScheme(mainViewModel.colorScheme)
-                .environmentObject(mainViewModel)
+                .preferredColorScheme(isDark ? .dark : .light)
         }
     }
 }

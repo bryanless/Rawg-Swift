@@ -43,7 +43,7 @@ struct GameItem: View {
             }
             .padding([.leading, .trailing, .bottom], Space.small)
         }
-        .background(Color.surface)
+        .background(Color.surfaceColor)
         .cornerRadius(Shape.roundedCorner)
     }
 }

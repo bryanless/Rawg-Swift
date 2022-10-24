@@ -9,22 +9,22 @@ import Foundation
 import SwiftUI
 
 extension Color {
-    static var background: Color {
+    static var backgroundColor: Color {
         return Color("BackgroundColor")
     }
-    static var primary: Color {
+    static var primaryColor: Color {
         return Color("PrimaryColor")
     }
-    static var tertiary: Color {
+    static var tertiaryColor: Color {
         return Color("TertiaryColor")
     }
-    static var surface: Color {
+    static var surfaceColor: Color {
         return Color("SurfaceColor")
     }
-    static var textPrimary: Color {
+    static var textPrimaryColor: Color {
         return Color("PrimaryTextColor")
     }
-    static var textSecondary: Color {
+    static var textSecondaryColor: Color {
         return Color("SecondaryTextColor")
     }
 }

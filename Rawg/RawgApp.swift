@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct RawgApp: App {
+    @StateObject private var mainViewModel = MainViewModel()
+
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .preferredColorScheme(mainViewModel.colorScheme)
+                .environmentObject(mainViewModel)
         }
     }
 }

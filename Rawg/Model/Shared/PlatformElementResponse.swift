@@ -5,8 +5,6 @@
 //  Created by Bryan on 22/10/22.
 //
 
-import Foundation
-
 // MARK: - PlatformElement
 struct PlatformElement: Codable {
     let platform: PlatformPlatform

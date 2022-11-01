@@ -5,8 +5,6 @@
 //  Created by Bryan on 22/10/22.
 //
 
-import Foundation
-
 // MARK: - Store
 struct Store: Codable {
     let id: Int?

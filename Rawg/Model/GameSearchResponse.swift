@@ -5,8 +5,6 @@
 //  Created by Bryan on 23/10/22.
 //
 
-import Foundation
-
 // MARK: - GameSearchResponse
 struct GameSearchResponse: Codable {
     let count: Int

@@ -40,7 +40,6 @@ func gameItemImage(_ urlString: String) -> some View {
     }
     .frame(height: 110)
     .clipped()
-//    .cornerRadius(Shape.roundedCorner)
 }
 
 func gameDetailImage(_ urlString: String) -> some View {

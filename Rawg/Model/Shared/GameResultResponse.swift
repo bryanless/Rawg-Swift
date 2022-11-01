@@ -5,8 +5,6 @@
 //  Created by Bryan on 23/10/22.
 //
 
-import Foundation
-
 // MARK: - Result
 struct GamesResult: Codable, Identifiable {
     let id: Int

@@ -5,8 +5,6 @@
 //  Created by Bryan on 22/10/22.
 //
 
-import Foundation
-
 // MARK: - Rating
 struct Rating: Codable {
     let id: Int

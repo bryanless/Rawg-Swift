@@ -31,9 +31,18 @@ struct GameDetail: View {
                         alignment: .leading,
                         spacing: Space.medium
                     ) {
-                        Text(game.name)
-                            .font(.title)
+                        HStack {
+                            Text(game.name)
+                                .font(.title)
                             .fontWeight(.bold)
+                            Spacer()
+                            FavoriteButton(
+                                id: game.id.description,
+                                name: game.name,
+                                backgroundImage: game.backgroundImage ?? "",
+                                isSet: $detailViewModel.isFavorite
+                            )
+                        }
                         Divider()
                         HStack {
                             GameRateItem(
@@ -96,6 +105,9 @@ struct GameDetail: View {
                     }
                     .padding()
                 }
+            }
+            .onAppear {
+                detailViewModel.getFavoriteById(game.id.description)
             }
             .navigationTitle("Game Detail")
             .navigationBarTitleDisplayMode(.inline)

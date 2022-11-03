@@ -8,7 +8,7 @@
 // MARK: - GameDetailResponse
 struct GameDetailResponse: Codable {
     let id: Int
-    let name: String
+    let slug, name: String
     let metacritic: Int?
     let released: String?
     let backgroundImage: String?
@@ -19,8 +19,8 @@ struct GameDetailResponse: Codable {
     let descriptionRaw: String
 
     enum CodingKeys: String, CodingKey {
-        case id, name, metacritic
-        case released
+        case id, slug, name
+        case metacritic, released
         case backgroundImage = "background_image"
         case rating
         case ratingsCount = "ratings_count"
@@ -32,6 +32,7 @@ struct GameDetailResponse: Codable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.id = try container.decode(Int.self, forKey: .id)
+        self.slug = try container.decode(String.self, forKey: .slug)
         self.name = try container.decode(String.self, forKey: .name)
         self.metacritic = try? container.decode(Int.self, forKey: .metacritic)
         let releasedString = try? container.decode(String.self, forKey: .released)

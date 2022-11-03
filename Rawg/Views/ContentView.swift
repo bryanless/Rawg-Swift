@@ -11,7 +11,7 @@ struct ContentView: View {
     @State private var selection: Tab = .home
 
     enum Tab {
-        case home, explore, profile
+        case home, explore, favorite, profile
     }
 
     var body: some View {
@@ -26,6 +26,11 @@ struct ContentView: View {
                     Label("Explore", systemImage: Icons.magnifyingGlass)
                 }
                 .tag(Tab.explore)
+            Favorite()
+                .tabItem {
+                    Label("Favorite", systemImage: Icons.heart)
+                }
+                .tag(Tab.favorite)
             Profile()
                 .tabItem {
                     Label("Profile", systemImage: Icons.person)

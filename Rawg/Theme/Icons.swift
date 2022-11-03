@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 struct Icons {
+    static let heart = "heart.fill"
     static let house = "house.fill"
     static let magnifyingGlass = "magnifyingglass"
     static let person = "person.fill"

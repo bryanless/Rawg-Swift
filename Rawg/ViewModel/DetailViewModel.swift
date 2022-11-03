@@ -9,6 +9,7 @@ import Foundation
 
 class DetailViewModel: ObservableObject {
     @Published var currentState: ViewState = .start
+    @Published var isFavorite: Bool = false
 
     // MARK: - View state
     enum ViewState {
@@ -30,8 +31,25 @@ class DetailViewModel: ObservableObject {
         }
     }
 
+    // MARK: - Get favorite game by ID
+    func getFavoriteById(_ id: String) {
+        UserProvider().getFavoriteById(id) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case let .success(favorite):
+                    print("hola")
+                    self.isFavorite = favorite.isFavorite ?? false
+                case let .failure(error):
+                    print("hohoho")
+                    self.currentState = .failure(error)
+                }
+            }
+        }
+    }
+
     // MARK: - Initialize
     init(id: String) {
         fetchGame(id)
+        getFavoriteById(id)
     }
 }

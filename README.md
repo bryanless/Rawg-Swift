@@ -14,15 +14,19 @@ This app helps you access information of any games such as ratings, metascore, g
 - List of games
 - Search game by name
 
+### Favorite
+- List of games added to favorite
+
 ### Profile
+- Edit profile
 - Toggle dark mode theme
 
 ## Getting Started
 
 ### Prerequisites
 
-* macOS Monterey 12.16.1
-* Xcode 14.0.1
+* macOS Monterey 13.0
+* Xcode 14.1
 * iOS 16
 > Requirements might be lower, the app is developed using the system listed above
 

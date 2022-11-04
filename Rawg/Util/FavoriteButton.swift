@@ -33,6 +33,11 @@ struct FavoriteButton: View {
 
 struct FavoriteButton_Previews: PreviewProvider {
     static var previews: some View {
-        FavoriteButton(id: "0", name: "", backgroundImage: "", isSet: .constant(true), refreshPrevious: .constant(false))
+        FavoriteButton(
+            id: "0", name: "",
+            backgroundImage: "",
+            isSet: .constant(true),
+            refreshPrevious: .constant(false)
+        )
     }
 }

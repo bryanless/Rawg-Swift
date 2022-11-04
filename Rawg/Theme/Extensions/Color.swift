@@ -12,6 +12,9 @@ extension Color {
     static var backgroundColor: Color {
         return Color("BackgroundColor")
     }
+    static var formColor: Color {
+        return Color("FormColor")
+    }
     static var surfaceColor: Color {
         return Color("SurfaceColor")
     }

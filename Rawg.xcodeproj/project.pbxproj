@@ -59,6 +59,7 @@
 		93E2637A2905918B0051177D /* ShortScreenshotResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E263792905918B0051177D /* ShortScreenshotResponse.swift */; };
 		93E2637C290597360051177D /* GameResultResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E2637B290597360051177D /* GameResultResponse.swift */; };
 		93E573AB29145F2F009676B8 /* ProfileEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E573AA29145F2F009676B8 /* ProfileEdit.swift */; };
+		93E573AD291461B2009676B8 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E573AC291461B2009676B8 /* ProfileViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -113,6 +114,7 @@
 		93E263792905918B0051177D /* ShortScreenshotResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortScreenshotResponse.swift; sourceTree = "<group>"; };
 		93E2637B290597360051177D /* GameResultResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResultResponse.swift; sourceTree = "<group>"; };
 		93E573AA29145F2F009676B8 /* ProfileEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEdit.swift; sourceTree = "<group>"; };
+		93E573AC291461B2009676B8 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +192,7 @@
 				93A2F4032906E85F00CDD889 /* HomeViewModel.swift */,
 				93E263422903DC580051177D /* ExploreViewModel.swift */,
 				93C9287E29117B3B00B28CF3 /* FavoriteViewModel.swift */,
+				93E573AC291461B2009676B8 /* ProfileViewModel.swift */,
 				93E26373290442C90051177D /* DetailViewModel.swift */,
 			);
 			path = ViewModel;
@@ -478,6 +481,7 @@
 				93C9287D29117AAA00B28CF3 /* Favorite.swift in Sources */,
 				93C9287A2911791800B28CF3 /* FavoriteModel.swift in Sources */,
 				9322D4282902C67100DD8069 /* PreviewData.swift in Sources */,
+				93E573AD291461B2009676B8 /* ProfileViewModel.swift in Sources */,
 				93E263432903DC580051177D /* ExploreViewModel.swift in Sources */,
 				93C92872291175E200B28CF3 /* FavoriteButton.swift in Sources */,
 				93E2635B29040F4C0051177D /* RatingResponse.swift in Sources */,

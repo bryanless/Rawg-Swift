@@ -31,7 +31,10 @@ struct ExploreGrid: View {
                         LazyVGrid(columns: columns) {
                             ForEach(games) { game in
                                 NavigationLink {
-                                    GameDetail(detailViewModel: DetailViewModel(id: game.id.description))
+                                    GameDetail(
+                                        detailViewModel: DetailViewModel(id: game.id.description),
+                                        refreshPrevious: .constant(false)
+                                    )
                                 } label: {
                                     GameItem(game: game)
                                 }

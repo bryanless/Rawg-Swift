@@ -12,12 +12,14 @@ struct FavoriteButton: View {
     var name: String
     var backgroundImage: String
     @Binding var isSet: Bool
+    @Binding var refreshPrevious: Bool
 
     var body: some View {
         Button {
             UserProvider().updateFavorite(id: id, name: name, backgroundImage: backgroundImage, isFavorite: !isSet) {
                 DispatchQueue.main.async {
                     isSet.toggle()
+                    refreshPrevious.toggle()
                 }
             }
         } label: {
@@ -31,6 +33,6 @@ struct FavoriteButton: View {
 
 struct FavoriteButton_Previews: PreviewProvider {
     static var previews: some View {
-        FavoriteButton(id: "0", name: "", backgroundImage: "", isSet: .constant(true))
+        FavoriteButton(id: "0", name: "", backgroundImage: "", isSet: .constant(true), refreshPrevious: .constant(false))
     }
 }

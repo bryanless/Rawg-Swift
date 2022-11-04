@@ -31,7 +31,8 @@ struct GameFavoriteItem: View {
                     id: game.id?.description ?? "",
                     name: game.name ?? "",
                     backgroundImage: game.backgroundImage ?? "",
-                    isSet: $game.isFavorite.toUnwrapped(defaultValue: false)
+                    isSet: $game.isFavorite.toUnwrapped(defaultValue: false),
+                    refreshPrevious: .constant(false)
                 )
             }
             .padding([.leading, .trailing, .bottom], Space.small)

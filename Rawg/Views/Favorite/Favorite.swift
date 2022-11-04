@@ -9,6 +9,7 @@ import SwiftUI
 
 struct Favorite: View {
     @StateObject private var favoriteViewModel = FavoriteViewModel()
+    @State private var refresh: Bool = false
 
     private var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
 
@@ -29,7 +30,10 @@ struct Favorite: View {
                         LazyVGrid(columns: columns) {
                             ForEach(favoriteViewModel.favoriteGames) { game in
                                 NavigationLink {
-                                    GameDetail(detailViewModel: DetailViewModel(id: game.id?.description ?? ""))
+                                    GameDetail(
+                                        detailViewModel: DetailViewModel(id: game.id?.description ?? ""),
+                                        refreshPrevious: $refresh
+                                    )
                                 } label: {
                                     GameFavoriteItem(game: game)
                                 }
@@ -38,6 +42,12 @@ struct Favorite: View {
                         }
                         .padding()
                         .navigationTitle("Favorite")
+                    }
+                    .onAppear {
+                        if refresh {
+                            favoriteViewModel.getFavorites()
+                            refresh = false
+                        }
                     }
                 }
             case let .failure(error):

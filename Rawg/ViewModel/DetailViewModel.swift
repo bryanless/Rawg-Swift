@@ -37,10 +37,8 @@ class DetailViewModel: ObservableObject {
             DispatchQueue.main.async {
                 switch result {
                 case let .success(favorite):
-                    print("hola")
                     self.isFavorite = favorite.isFavorite ?? false
                 case let .failure(error):
-                    print("hohoho")
                     self.currentState = .failure(error)
                 }
             }

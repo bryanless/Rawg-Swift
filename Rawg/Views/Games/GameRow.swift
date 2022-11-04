@@ -28,7 +28,7 @@ struct GameRow: View {
                     LazyHStack {
                         ForEach(games) { game in
                             NavigationLink {
-                                GameDetail(detailViewModel: DetailViewModel(id: game.id.description))
+                                GameDetail(detailViewModel: DetailViewModel(id: game.id.description), refreshPrevious: .constant(false))
                             } label: {
                                 GameItem(game: game)
                                     .frame(width: 175)

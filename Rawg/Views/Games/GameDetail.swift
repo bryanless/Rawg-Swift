@@ -9,6 +9,7 @@ import SwiftUI
 
 struct GameDetail: View {
     @StateObject var detailViewModel: DetailViewModel
+    @Binding var refreshPrevious: Bool
 
     var body: some View {
         switch detailViewModel.currentState {
@@ -40,7 +41,8 @@ struct GameDetail: View {
                                 id: game.id.description,
                                 name: game.name,
                                 backgroundImage: game.backgroundImage ?? "",
-                                isSet: $detailViewModel.isFavorite
+                                isSet: $detailViewModel.isFavorite,
+                                refreshPrevious: $refreshPrevious
                             )
                         }
                         Divider()
@@ -124,6 +126,6 @@ struct GameDetail: View {
 
 struct GameDetail_Previews: PreviewProvider {
     static var previews: some View {
-        GameDetail(detailViewModel: DetailViewModel(id: "401805"))
+        GameDetail(detailViewModel: DetailViewModel(id: "401805"), refreshPrevious: .constant(false))
     }
 }

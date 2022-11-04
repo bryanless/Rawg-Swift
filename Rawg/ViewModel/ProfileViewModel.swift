@@ -66,5 +66,6 @@ class ProfileViewModel: ObservableObject {
 
     init() {
         getProfile()
+        loadProfilePicture()
     }
 }

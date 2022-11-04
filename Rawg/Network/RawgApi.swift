@@ -9,11 +9,20 @@ import Foundation
 import Alamofire
 
 struct RawgApi {
-    private let API_KEY = "56c20b91ae1648ac90d66da30067b299"
     private let BASE_URL = "https://api.rawg.io/api"
     private let GAMES = "games"
-
-    private let defaultParameter = ["key": "56c20b91ae1648ac90d66da30067b299"]
+    private var API_KEY: String {
+        // 1
+        guard let filePath = Bundle.main.path(forResource: "Info", ofType: "plist") else {
+            fatalError("Couldn't find file 'Info.plist'.")
+        }
+        // 2
+        let plist = NSDictionary(contentsOfFile: filePath)
+        guard let value = plist?.object(forKey: "API_KEY") as? String else {
+            fatalError("Couldn't find key 'API_KEY' in 'Info.plist'.")
+        }
+        return value
+    }
 
     enum Ordering: String {
         case name, released, added
@@ -23,7 +32,7 @@ struct RawgApi {
 
     // MARK: - Get games
     func getGames(completion: @escaping (Result<[GamesResult], AFError>) -> Void) {
-        AF.request("\(BASE_URL)/\(GAMES)", parameters: defaultParameter)
+        AF.request("\(BASE_URL)/\(GAMES)", parameters: ["key": API_KEY])
             .validate()
             .responseDecodable(of: GamesResponse.self) { response in
                 switch response.result {
@@ -60,7 +69,7 @@ struct RawgApi {
 
     // MARK: - Get game details
     func getGame(id: String, completion: @escaping (Result<GameDetailResponse, AFError>) -> Void) {
-        AF.request("\(BASE_URL)/\(GAMES)/\(id)", parameters: defaultParameter)
+        AF.request("\(BASE_URL)/\(GAMES)/\(id)", parameters: ["key": API_KEY])
             .validate()
             .responseDecodable(of: GameDetailResponse.self) { response in
                 switch response.result {

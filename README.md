@@ -27,7 +27,7 @@ This app helps you access information of any games such as ratings, metascore, g
 
 * macOS Ventura 13.0
 * Xcode 14.1
-* iOS 16
+* iOS 16.0
 > Requirements might be lower, the app is developed using the system listed above
 
 ### Installation
